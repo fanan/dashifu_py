@@ -274,7 +274,7 @@ class Agent:
         wb = openpyxl.Workbook()
         ws = wb.active
         #title
-        title = self.title.replace("2018", "2019")
+        title = self.title.replace("2021", "2022")
         ws.cell(1, 1, title)
         ws.cell(1, 1).alignment = alignment
         #format
@@ -360,9 +360,10 @@ class Agent:
 
 
 if __name__ == "__main__":
-    fn = "/Users/baidu/Downloads/dashifu/丸美客户明细表 - 副本/江苏区域/扬州镇江泰州/史小花.xls"
+    fn = u"/Users/fanan/Downloads/dashifu//2020客户明细表/江苏区域/苏南/无锡/仰双岱.xlsx"
     a = Agent(fn)
     assert a.is_valid
     assert a.parse()
-    for info in a.get_month_info(os.path.dirname(os.path.expanduser("~/Downloads/dashifu/"))):
-        print info
+    # for info in a.get_month_info(os.path.dirname(os.path.expanduser("~/Downloads/dashifu/"))):
+    #     print info
+    a.newyear("hello.xlsx")
