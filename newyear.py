@@ -19,23 +19,23 @@ for root, _, filenames in os.walk(root_dir):
             continue
         if not fn.endswith(".xlsx"):
             continue
-        print "handling {}".format(fn)
+        print("handling {}".format(fn))
         agent = Agent(fn)
         if not agent.is_valid:
             continue
         if not agent.parse():
             agent.close()
-            print "{} failed! error={}".format(fn, agent.error_msg)
+            print("{} failed! error={}".format(fn, agent.error_msg))
             continue
         agent.close()
         new_fn = fn.replace("2021", "2022")
         new_dir = os.path.dirname(new_fn)
         if not os.path.exists(new_dir):
-            print "mkdir -p {}".format(new_dir)
+            print("mkdir -p {}".format(new_dir))
             os.makedirs(new_dir)
         try:
             agent.newyear(new_fn)
         except Exception as e:
-            print e
+            print(e)
         # os.rename(fn, new_fn)
 

@@ -44,5 +44,5 @@ if __name__ == "__main__":
                 filelists.append(os.path.join(root, filename))
 
     for fn in filelists:
-        print "refreshing {}".format(fn)
+        print("refreshing {}".format(fn))
         refresh(fn)

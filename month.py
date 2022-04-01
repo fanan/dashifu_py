@@ -28,13 +28,13 @@ for root, _, filenames in os.walk(root_dir):
         fn = os.path.join(root, filename)
         if not is_excel(fn):
             continue
-        print "handling {}".format(fn)
+        print(("handling {}".format(fn)))
         agent = Agent(fn)
         if not agent.is_valid:
             continue
         if not agent.parse():
             agent.close()
-            print "{} failed! error={}".format(fn, agent.error_msg)
+            print(("{} failed! error={}".format(fn, agent.error_msg)))
             continue
         info = agent.get_month_info(root_dir)
         if len(info) != 0:
@@ -42,13 +42,13 @@ for root, _, filenames in os.walk(root_dir):
 
 max_length = max(len(x) for x in infos)
 
-print "all files done"
+print("all files done")
 
-for i in xrange(len(infos)):
-    l = len(infos[i])
-    while l < max_length:
+for i in range(len(infos)):
+    info_length = len(infos[i])
+    while info_length < max_length:
         infos[i].insert(0, "")
-        l += 1
+        info_length += 1
 
 
 with open(output_fn, "w") as fp:
